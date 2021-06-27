@@ -1,0 +1,106 @@
+<html>
+<head>
+<title> My Docker Page</title>
+</head>
+
+<script>
+function run(){
+var i = document.getElementById("ds").value
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://192.168.43.57/cgi-bin/basic.py?x=" + i,true);
+xhr.send();
+
+ xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("d1").innerHTML = output;
+    }
+} 
+</script>
+
+
+<style>
+
+
+ body{ margin: 30; 
+      padding:0;
+    }
+
+ div#hd{ 
+      height:100vh; 
+      background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(https://wallpapercave.com/wp/wp4676582.jpg); 
+      background-size: cover; 
+      background-position:right; 
+      display: flex; 
+      justify-content: left; 
+      padding-left:80px; 
+      font-family: Fantasy;
+      font-size: 40px ;
+	
+      
+      } 
+ 
+ div#cmdbox { 
+      width:700px; 
+      height:160px; 
+      background-color:#99bbff; 
+      padding:20px 
+      }
+ button { height:40px; 
+          width:80px; 
+          background: #ffb3d1; 
+          border:2%; 
+          color: #000; 
+          border-radius: 10px; 
+        }
+ button:hover{ background:#ffff33; 
+               cursor: pointer; }
+
+ div#d1 {
+	 color: white;
+         font-size: 20px
+         }
+ .mark{
+	color: #99ff99;
+	position:absolute;
+	top: 15%;
+	left:0%;
+	right: 0%;
+        font-size: 20px;
+}
+ img {
+	 border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px;
+  width: 150px;
+	
+}
+
+
+</style>
+<body>
+<div id="hd">
+<form action='http://192.168.43.57/cgi-bin/basic.py'>
+
+<p  style="border:2px solid Tomato; color:DodgerBlue;">Enter Command for Docker: </p>
+<br />
+<div class="img">
+<img src="https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2014/05/homepage-docker-logo.png?itok=zx0e-vcP" height=20% style="float:right">
+</div>
+
+<div id="cmdbox">
+<input name="x" id="ds" type="text" size="50" placeholder="enter cmd"  />
+<br /><br />
+<button onclick="run()" class="run-cmd" type="button">Submit</button>
+<pre>
+      <div id="d1">Output will be displayed here!</div>
+   </pre>
+
+<div class="mark">
+					
+	
+		<p><marquee>Welcome to Docker WebUI</marquee></p>			
+			</div>
+</div>
+</form>
+</div>
+</body>
